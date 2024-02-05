@@ -19,7 +19,6 @@ import Trainings from './src/screens/trainings';
 import Links from './src/screens/links';
 import Downloads from './src/screens/downloads';
 import ObliquesStrategies from './src/screens/obliques-strategies';
-import AppStack from './src/components/App';
 
 const Stack = createNativeStackNavigator();
 

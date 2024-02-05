@@ -1,12 +1,12 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import i18nData from '../../../assets/data/i18nData';
 import spaces from '../../../assets/styles/spaces';
 import colors from '../../../assets/styles/colors';
 import ButtonHeaderNav from './ButtonHeaderNav';
 import ButtonHeadeLang from './ButtonHeaderLang';
-import {useNavigation} from '@react-navigation/native';
 
 export default function Header() {
   const navigation = useNavigation();
