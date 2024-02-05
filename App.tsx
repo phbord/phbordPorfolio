@@ -42,14 +42,20 @@ function App(): React.JSX.Element {
         <StatusBar backgroundColor={colors.red} />
         <Header />
         {/* S C R E E N S */}
-        <Stack.Navigator initialRouteName="Knowledges">
+        <Stack.Navigator
+          initialRouteName="Knowledges"
+          screenOptions={{
+            headerShown: false,
+          }}>
           {data.map((stack, index) => (
             <Stack.Screen
               key={index}
               name={stack.name}
-              component={stack.component}
-              options={{title: menuData[index].name}}
-            />
+              options={{title: menuData[index].name}}>
+              {props => (
+                <stack.component {...props} title={menuData[index].name} />
+              )}
+            </Stack.Screen>
           ))}
         </Stack.Navigator>
       </NavigationContainer>
