@@ -1,5 +1,7 @@
 import {SupabaseClient, createClient} from '@supabase/supabase-js';
-import {SUPABASE_KEY, SUPABASE_URL} from '../../assets/data/constants';
+import 'react-native-url-polyfill/auto';
+
+import {SUPABASE_KEY, SUPABASE_URL} from '@env';
 
 async function initializeSupabase(): Promise<
   SupabaseClient<any, 'public', any> | undefined
