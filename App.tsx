@@ -9,9 +9,11 @@ import React from 'react';
 import {StatusBar, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Provider as StoreProvider} from 'react-redux';
 
 import i18nData from './assets/data/i18nData';
 import colors from './assets/styles/colors';
+import store from './src/services/store/store';
 import Header from './src/components/Header';
 import Knowledges from './src/screens/knowledges';
 import Experiences from './src/screens/experiences';
@@ -36,14 +38,13 @@ function App(): React.JSX.Element {
   ];
 
   return (
-    <>
+    <StoreProvider store={store}>
       <NavigationContainer>
         {/* T O P */}
         <StatusBar backgroundColor={colors.red} />
         <Header />
         {/* S C R E E N S */}
         <Stack.Navigator
-          initialRouteName="Knowledges"
           screenOptions={{
             headerShown: false,
           }}>
@@ -59,7 +60,7 @@ function App(): React.JSX.Element {
           ))}
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </StoreProvider>
   );
 }
 

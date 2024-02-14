@@ -1,16 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 
+import {
+  selectLang,
+  toogle,
+} from '../../services/store/features/langs/langSlice';
 import colors from '../../../assets/styles/colors';
+import {AppDispatch, RootState} from '../../interfaces/mainData/reduxInterface';
 
 export default function ButtonHeadeLang() {
-  const [lang, setLang] = useState('fr');
-
-  const handleClick = () => (lang === 'en' ? setLang('fr') : setLang('en'));
+  const lang: RootState = useSelector(selectLang);
+  const dispatch: AppDispatch = useDispatch();
 
   return (
-    <TouchableOpacity style={styles.button} onPress={handleClick}>
-      <Text style={styles.buttonText}>{lang}</Text>
+    <TouchableOpacity style={styles.button} onPress={() => dispatch(toogle())}>
+      <Text style={styles.lang}>{lang}</Text>
     </TouchableOpacity>
   );
 }
@@ -26,7 +31,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: colors.light,
   },
-  buttonText: {
+  lang: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colors.light,

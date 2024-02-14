@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 
 import getData from '../../services/getData';
@@ -8,10 +8,17 @@ import bgImagesData from '../../../assets/images/backgrounds/bgImagesData';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
-import KnowledgesDetails from './KnowledgesDetails';
+import KnowledgesTile from './KnowledgesTile';
+import {selectLang} from '../../services/store/features/langs/langSlice';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../interfaces/mainData/reduxInterface';
 
 export default function Knowledges({title, navigation}) {
+  const [data, setData] = useState();
+  const lang: RootState = useSelector(selectLang);
+  i18nData.locale = lang === 'fr' ? 'fr' : 'en';
   const keywordsData = i18nData.t('mainKeywords', {returnObjects: true});
+  const titleData = i18nData.t('header', {returnObjects: true});
   const options: object = {
     table: 'Knowledges',
     orderBy: 'order',
@@ -19,12 +26,13 @@ export default function Knowledges({title, navigation}) {
   };
 
   const fetchData = async () => {
-    const data = await getData(options);
-    console.log('data =======>', data);
+    setData(await getData(options));
+    //console.log('data[0] =======>', data[0]);
+    return data;
   };
 
   const renderItem = ({item}) => {
-    return <KnowledgesDetails item={item} navigation={navigation} />;
+    return <KnowledgesTile item={item} navigation={navigation} />;
   };
 
   useEffect(() => {
@@ -42,10 +50,10 @@ export default function Knowledges({title, navigation}) {
       />
       <View style={styles.content}>
         {/* TITLE */}
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{titleData[0].name}</Text>
         {/* LIST */}
         <FlatList
-          data={fetchData}
+          data={data}
           keyExtractor={(item, index) => index.toString()}
           renderItem={renderItem}
         />
@@ -61,6 +69,7 @@ const styles = StyleSheet.create({
   content: {
     marginTop: spaces.containerSpaceX,
     paddingHorizontal: spaces.containerSpaceX,
+    //paddingBottom: 160,
   },
   title: {
     color: colors.red,
