@@ -1,14 +1,18 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {useDispatch} from 'react-redux';
 
+import {AppDispatch} from '../../interfaces/mainData/reduxInterface';
 import colors from '../../../assets/styles/colors';
 import {IconBurgerMenu} from '../../../assets';
+import {toogle} from '../../services/store/features/menu/menuSlice';
 
 export default function ButtonHeaderNav() {
+  //const isMenuShowed: RootState = useSelector(selectMenu);
+  const dispatch: AppDispatch = useDispatch();
+
   return (
-    <TouchableOpacity
-      style={styles.button}
-      onPress={() => console.log('Pressed')}>
+    <TouchableOpacity style={styles.button} onPress={() => dispatch(toogle())}>
       <Image source={IconBurgerMenu} />
     </TouchableOpacity>
   );

@@ -7,6 +7,7 @@ import spaces from '../../../assets/styles/spaces';
 import colors from '../../../assets/styles/colors';
 import ButtonHeaderNav from './ButtonHeaderNav';
 import ButtonHeadeLang from './ButtonHeaderLang';
+import ModalHeaderNav from './ModalHeaderNav';
 
 export default function Header() {
   const navigation = useNavigation();
@@ -26,12 +27,15 @@ export default function Header() {
         <ButtonHeadeLang />
         <ButtonHeaderNav />
       </View>
+      {/* MODAL */}
+      <ModalHeaderNav />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     paddingVertical: 5,
     paddingHorizontal: spaces.containerSpaceX,
     flexDirection: 'row',

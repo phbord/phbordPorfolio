@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
 
+import {RootState} from '../../interfaces/mainData/reduxInterface';
+import {selectLang} from '../../services/store/features/langs/langSlice';
 import getData from '../../services/getData';
+import {optionsKnowledges} from '../../services/optionsData';
 import i18nData from '../../../assets/data/i18nData';
 import {ImgProfile} from '../../../assets';
 import bgImagesData from '../../../assets/images/backgrounds/bgImagesData';
@@ -9,9 +13,6 @@ import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
 import KnowledgesTile from './KnowledgesTile';
-import {selectLang} from '../../services/store/features/langs/langSlice';
-import {useSelector} from 'react-redux';
-import {RootState} from '../../interfaces/mainData/reduxInterface';
 
 export default function Knowledges({title, navigation}) {
   const [data, setData] = useState();
@@ -19,14 +20,9 @@ export default function Knowledges({title, navigation}) {
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
   const keywordsData = i18nData.t('mainKeywords', {returnObjects: true});
   const titleData = i18nData.t('header', {returnObjects: true});
-  const options: object = {
-    table: 'Knowledges',
-    orderBy: 'order',
-    ascending: true,
-  };
 
   const fetchData = async () => {
-    setData(await getData(options));
+    setData(await getData(optionsKnowledges));
     //console.log('data[0] =======>', data[0]);
     return data;
   };

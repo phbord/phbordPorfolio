@@ -14,7 +14,7 @@
   "dependencies": {
     "@gluestack-style/react": "^1.0.44",
     "@gluestack-ui/themed": "^1.1.2",
-    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.17",
     "@reduxjs/toolkit": "^2.1.0",
     "@supabase/supabase-js": "^2.39.3",
