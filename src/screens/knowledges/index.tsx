@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
@@ -23,12 +23,7 @@ export default function Knowledges({title, navigation}) {
 
   const fetchData = async () => {
     setData(await getData(optionsKnowledges));
-    //console.log('data[0] =======>', data[0]);
     return data;
-  };
-
-  const renderItem = ({item}) => {
-    return <KnowledgesTile item={item} navigation={navigation} />;
   };
 
   useEffect(() => {
@@ -36,25 +31,25 @@ export default function Knowledges({title, navigation}) {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {/* BACKGROUND IMAGE */}
-      <BackgroundImage
-        bgSource={bgImagesData.map}
-        profileSource={ImgProfile}
-        positionText={i18nData.t('position')}
-        keyWordsText={keywordsData}
-      />
-      <View style={styles.content}>
-        {/* TITLE */}
-        <Text style={styles.title}>{titleData[0].name}</Text>
-        {/* LIST */}
-        <FlatList
-          data={data}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={renderItem}
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        {/* BACKGROUND IMAGE */}
+        <BackgroundImage
+          bgSource={bgImagesData.map}
+          profileSource={ImgProfile}
+          positionText={i18nData.t('position')}
+          keyWordsText={keywordsData}
         />
-      </View>
-    </View>
+        <View style={styles.content}>
+          {/* TITLE */}
+          <Text style={styles.title}>{titleData[0].name}</Text>
+          {/* LIST */}
+          {data?.map((item, index) => (
+            <KnowledgesTile key={index} item={item} />
+          ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -65,7 +60,7 @@ const styles = StyleSheet.create({
   content: {
     marginTop: spaces.containerSpaceX,
     paddingHorizontal: spaces.containerSpaceX,
-    //paddingBottom: 160,
+    paddingBottom: 60,
   },
   title: {
     color: colors.red,

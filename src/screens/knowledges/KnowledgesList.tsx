@@ -40,11 +40,7 @@ import {
 export default function KnowledgesList({item}) {
   const picto = item.picto.replace('.svg', '');
 
-  /* const path = '../../../assets/images/icons-tech/';
-  const picto = item.picto.replace('.svg', '.png');
-  const source = `${path}${picto}`; */
-
-  const getIconsTech = (pictoFile: string, styles) => {
+  const getIconsTech = (pictoFile: string, styles, stylesSquare) => {
     switch (pictoFile) {
       case 'scrum':
         return <Image source={IconScrum} style={styles} />;
@@ -87,7 +83,7 @@ export default function KnowledgesList({item}) {
       case 'nextjs':
         return <Image source={IconNextjs} style={styles} />;
       case 'zustand':
-        return <Image source={IconZustand} style={styles} />;
+        return <Image source={IconZustand} style={stylesSquare} />;
       case 'vuejs':
         return <Image source={IconVuejs} style={styles} />;
       case 'nodejs':
@@ -119,10 +115,9 @@ export default function KnowledgesList({item}) {
 
   return (
     <View style={styles.container}>
-      {getIconsTech(picto, styles.picto)
-        ? getIconsTech(picto, styles.picto)
+      {getIconsTech(picto, styles.picto, styles.pictoSquare)
+        ? getIconsTech(picto, styles.picto, styles.pictoSquare)
         : null}
-      {/* <Image source={require(source)} style={styles.picto} /> */}
       <Text style={item.fav ? styles.nameBold : styles.name}>{item.name}</Text>
     </View>
   );
@@ -137,6 +132,12 @@ const styles = StyleSheet.create({
   },
   picto: {
     width: 40,
+    height: 24,
+    marginBottom: 5,
+    resizeMode: 'contain',
+  },
+  pictoSquare: {
+    width: 24,
     height: 24,
     marginBottom: 5,
     resizeMode: 'contain',

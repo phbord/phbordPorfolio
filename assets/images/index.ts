@@ -3,6 +3,7 @@ import PictoPhb from './picto-phb.png';
 // icon
 import IconBurgerMenu from './icons/icon-burger-menu.png';
 // icon-tech
+import IconStar from './icons-tech/svg-logo.png';
 import IconScrum from './icons-tech/scrum.png';
 import IconGit from './icons-tech/git.png';
 import IconJira from './icons-tech/jira.png';
@@ -40,6 +41,7 @@ import IconRedux from './icons-tech/redux.png';
 
 export {
   ImgProfile,
+  IconStar,
   PictoPhb,
   IconBurgerMenu,
   IconScrum,

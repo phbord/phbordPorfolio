@@ -14,6 +14,7 @@ import {Provider as StoreProvider} from 'react-redux';
 import i18nData from './assets/data/i18nData';
 import colors from './assets/styles/colors';
 import store from './src/services/store/store';
+import dataHeader from './assets/data/dataHeader';
 import Header from './src/components/Header';
 import Knowledges from './src/screens/knowledges';
 import Experiences from './src/screens/experiences';
@@ -29,12 +30,12 @@ function App(): React.JSX.Element {
   const menuData = i18nData.t('header', {returnObjects: true});
 
   const data = [
-    {name: 'Knowledges', component: Knowledges},
-    {name: 'Experiences', component: Experiences},
-    {name: 'Trainings', component: Trainings},
-    {name: 'Links', component: Links},
-    {name: 'Downloads', component: Downloads},
-    {name: 'ObliquesStrategies', component: ObliquesStrategies},
+    {name: dataHeader[0], component: Knowledges},
+    {name: dataHeader[1], component: Experiences},
+    {name: dataHeader[2], component: Trainings},
+    {name: dataHeader[3], component: Links},
+    {name: dataHeader[4], component: Downloads},
+    {name: dataHeader[5], component: ObliquesStrategies},
   ];
 
   return (
