@@ -14,7 +14,7 @@ import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
 import ExperiencesTile from './ExperiencesTile';
 
-export default function Experiences() {
+export default function Experiences({navigation}) {
   const [data, setData] = useState();
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
@@ -45,7 +45,7 @@ export default function Experiences() {
           <Text style={styles.title}>{titleData[1].name}</Text>
           {/* LIST */}
           {data?.map((item, index) => (
-            <ExperiencesTile key={index} item={item} />
+            <ExperiencesTile key={index} item={item} navigation={navigation} />
           ))}
         </View>
       </ScrollView>

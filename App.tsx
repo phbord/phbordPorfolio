@@ -22,6 +22,7 @@ import Trainings from './src/screens/trainings';
 import Links from './src/screens/links';
 import Downloads from './src/screens/downloads';
 import ObliquesStrategies from './src/screens/obliques-strategies';
+import ExperiencesDescription from './src/screens/experiences/ExperiencesDescription';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,7 @@ function App(): React.JSX.Element {
     {name: dataHeader[3], component: Links},
     {name: dataHeader[4], component: Downloads},
     {name: dataHeader[5], component: ObliquesStrategies},
+    {name: dataHeader[6], component: ExperiencesDescription},
   ];
 
   return (

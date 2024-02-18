@@ -5,6 +5,7 @@ const dataHeader = [
   'Links',
   'Downloads',
   'ObliquesStrategies',
+  'ExperiencesDescription',
 ];
 
 export default dataHeader;
