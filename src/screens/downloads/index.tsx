@@ -12,6 +12,7 @@ import bgImagesData from '../../../assets/images/backgrounds/bgImagesData';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
+import DownloadsTile from './DownloadsTile';
 
 export default function Downloads() {
   const [data, setData] = useState();
@@ -21,8 +22,7 @@ export default function Downloads() {
   const titleData = i18nData.t('header', {returnObjects: true});
 
   const fetchData = async () => {
-    setData(await getData(optionsExperiences));
-    //console.log('data[0] =======>', data[0]);
+    setData(await getData(optionsDownloads));
     return data;
   };
 
@@ -44,6 +44,9 @@ export default function Downloads() {
           {/* TITLE */}
           <Text style={styles.title}>{titleData[4].name}</Text>
           {/* LIST */}
+          {data?.map((item, index) => (
+            <DownloadsTile key={index} item={item} />
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>

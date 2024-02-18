@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {
   selectLang,
-  toogle,
+  toogleLang,
 } from '../../services/store/features/langs/langSlice';
 import colors from '../../../assets/styles/colors';
 import {AppDispatch, RootState} from '../../interfaces/mainData/reduxInterface';
@@ -14,7 +14,9 @@ export default function ButtonHeadeLang() {
   const dispatch: AppDispatch = useDispatch();
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => dispatch(toogle())}>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() => dispatch(toogleLang())}>
       <Text style={styles.lang}>{lang}</Text>
     </TouchableOpacity>
   );

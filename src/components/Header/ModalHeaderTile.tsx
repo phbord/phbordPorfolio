@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {Image, Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Link} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
 import {ModalHeaderTileInterface} from '../../interfaces/mainData/modalHeaderTile';
 import {AppDispatch} from '../../interfaces/mainData/reduxInterface';
-import {close} from '../../services/store/features/menu/menuSlice';
+import {closeModal} from '../../services/store/features/menu/menuSlice';
 import dataHeader from '../../../assets/data/dataHeader';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
@@ -16,12 +16,26 @@ export default function ModalHeaderTile({
 }: ModalHeaderTileInterface): Element {
   const dispatch: AppDispatch = useDispatch();
 
-  return (
+  const TextBlock: React.JSX.Element = (
+    <Text style={styles.text}>{item.name}</Text>
+  );
+
+  const handlePress = () => {
+    Linking.canOpenURL(item.href).then(() => {
+      Linking.openURL(item.href);
+    });
+  };
+
+  return item.isDownload ? (
+    <TouchableOpacity onPress={handlePress} style={styles.link}>
+      {TextBlock}
+    </TouchableOpacity>
+  ) : (
     <Link
       to={{screen: dataHeader[index]}}
-      onPress={() => dispatch(close())}
+      onPress={() => dispatch(closeModal())}
       style={styles.link}>
-      <Text style={styles.text}>{item.name}</Text>
+      {TextBlock}
     </Link>
   );
 }

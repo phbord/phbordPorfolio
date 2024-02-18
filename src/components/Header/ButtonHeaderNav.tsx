@@ -5,14 +5,16 @@ import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../../interfaces/mainData/reduxInterface';
 import colors from '../../../assets/styles/colors';
 import {IconBurgerMenu} from '../../../assets';
-import {toogle} from '../../services/store/features/menu/menuSlice';
+import {toogleModal} from '../../services/store/features/menu/menuSlice';
 
 export default function ButtonHeaderNav() {
   //const isMenuShowed: RootState = useSelector(selectMenu);
   const dispatch: AppDispatch = useDispatch();
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => dispatch(toogle())}>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() => dispatch(toogleModal())}>
       <Image source={IconBurgerMenu} />
     </TouchableOpacity>
   );

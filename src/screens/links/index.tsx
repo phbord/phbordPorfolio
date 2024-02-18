@@ -12,6 +12,7 @@ import bgImagesData from '../../../assets/images/backgrounds/bgImagesData';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
+import LinksTile from './LinksTile';
 
 export default function Links() {
   const [data, setData] = useState();
@@ -44,6 +45,9 @@ export default function Links() {
           {/* TITLE */}
           <Text style={styles.title}>{titleData[3].name}</Text>
           {/* LIST */}
+          {data?.map((item, index) => (
+            <LinksTile key={index} item={item} />
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>

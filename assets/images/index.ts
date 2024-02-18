@@ -4,6 +4,7 @@ import PictoPhb from './picto-phb.png';
 import IconBurgerMenu from './icons/icon-burger-menu.png';
 import IconPlus from './icons/icon-plus.png';
 import IconArrowLeft from './icons/icon-arrow-left.png';
+import IconDownload from './icons/icon-download.png';
 // icon-tech
 import IconStar from './icons-tech/svg-logo.png';
 import IconScrum from './icons-tech/scrum.png';
@@ -46,6 +47,7 @@ export {
   IconStar,
   IconPlus,
   IconArrowLeft,
+  IconDownload,
   PictoPhb,
   IconBurgerMenu,
   IconScrum,

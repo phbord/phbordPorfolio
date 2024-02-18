@@ -1,14 +1,31 @@
 import React from 'react';
-import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  ImageProps,
+  ImageSourcePropType,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
+
+interface BackgroundImageInterface {
+  bgSource: string;
+  profileSource: (
+    props: ImageProps | Readonly<ImageProps>,
+  ) => ImageSourcePropType | undefined;
+  positionText: string;
+  keyWordsText: any;
+}
 
 export default function BackgroundImage({
   bgSource,
   profileSource,
   positionText,
   keyWordsText,
-}) {
+}: BackgroundImageInterface) {
   return (
     <ImageBackground
       source={{uri: bgSource}}
@@ -35,6 +52,7 @@ const styles = StyleSheet.create({
   container: {
     height: 100,
     paddingHorizontal: spaces.containerSpaceX,
+    backgroundColor: colors.greyDark,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',

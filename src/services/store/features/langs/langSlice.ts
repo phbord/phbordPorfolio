@@ -6,13 +6,13 @@ export const langSlice = createSlice({
     value: 'fr',
   },
   reducers: {
-    toogle: state => {
+    toogleLang: state => {
       state.value = state.value === 'fr' ? 'en' : 'fr';
     },
   },
 });
 
-export const {toogle} = langSlice.actions;
+export const {toogleLang} = langSlice.actions;
 
 export const selectLang = state => state.lang.value;
 

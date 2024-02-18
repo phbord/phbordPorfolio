@@ -6,16 +6,18 @@ export const menuSlice = createSlice({
     value: false,
   },
   reducers: {
-    toogle: state => {
-      state.value = !state.value;
+    toogleModal: state => {
+      //state.value = !state.value;
+      state.value = state.value === true ? false : true;
+      console.log('-----> state.value = ', state.value);
     },
-    close: state => {
+    closeModal: state => {
       state.value = false;
     },
   },
 });
 
-export const {toogle, close} = menuSlice.actions;
+export const {toogleModal, closeModal} = menuSlice.actions;
 
 export const selectMenu = state => state.menu.value;
 

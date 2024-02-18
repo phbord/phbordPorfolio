@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {
   Modal,
   StyleSheet,
@@ -12,20 +12,34 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {AppDispatch, RootState} from '../../interfaces/mainData/reduxInterface';
 import {ModalHeaderTileInterface} from '../../interfaces/mainData/modalHeaderTile';
-import {close, selectMenu} from '../../services/store/features/menu/menuSlice';
+import {
+  closeModal,
+  selectMenu,
+} from '../../services/store/features/menu/menuSlice';
+import {selectLang} from '../../services/store/features/langs/langSlice';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import i18nData from '../../../assets/data/i18nData';
 import ModalHeaderTile from './ModalHeaderTile';
+import ButtonHeadeLang from './ButtonHeaderLang';
+import ButtonHeaderNav from './ButtonHeaderNav';
 
 export default function ModalHeaderNav(): ReactElement<any, any> {
   const dispatch: AppDispatch = useDispatch();
   const isMenuShowed: RootState = useSelector(selectMenu);
-  const titleData = i18nData.t('header', {returnObjects: true});
+  const lang: RootState = useSelector(selectLang);
+  i18nData.locale = lang === 'fr' ? 'fr' : 'en';
+  const [titleData, setTitleData] = useState(
+    i18nData.t('header', {returnObjects: true}),
+  );
 
   const renderItem = ({item, index}: ModalHeaderTileInterface): Element => {
     return <ModalHeaderTile item={item} index={index} />;
   };
+
+  useEffect(() => {
+    setTitleData(i18nData.t('header', {returnObjects: true}));
+  }, [lang]);
 
   return (
     <Modal
@@ -33,20 +47,14 @@ export default function ModalHeaderNav(): ReactElement<any, any> {
       animationType="fade"
       transparent
       supportedOrientations={['portrait-upside-down']}>
+      {/* BUTTON GROUP */}
+      <View style={styles.containerButtons}>
+        <ButtonHeadeLang />
+        <ButtonHeaderNav />
+      </View>
+      {/* CONTENT */}
       <View style={styles.overlay}>
         <View style={styles.body}>
-          <View style={styles.closeButtonGroup}>
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={() => dispatch(close())}>
-              <Text>
-                <Image
-                  source={require('../../../assets/images/icons/icon-close.png')}
-                  style={styles.closeButton}
-                />
-              </Text>
-            </TouchableOpacity>
-          </View>
           <View style={styles.list}>
             {/* LIST */}
             <FlatList
@@ -62,12 +70,21 @@ export default function ModalHeaderNav(): ReactElement<any, any> {
 }
 
 const styles = StyleSheet.create({
+  containerButtons: {
+    paddingVertical: 5,
+    paddingHorizontal: spaces.containerSpaceX,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
   overlay: {
     position: 'absolute',
     top: 45,
     bottom: 0,
     left: 0,
     right: 0,
+    zIndex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
   },
   body: {
