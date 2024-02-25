@@ -60,7 +60,7 @@ function App(): React.JSX.Element {
                 <stack.component {...props} title={menuData[index].name} />
               )}
             </Stack.Screen>
-          ))}
+            ))}
         </Stack.Navigator>
       </NavigationContainer>
     </StoreProvider>

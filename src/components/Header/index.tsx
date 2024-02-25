@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingVertical: 5,
     paddingHorizontal: spaces.containerSpaceX,
+    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

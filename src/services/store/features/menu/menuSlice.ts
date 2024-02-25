@@ -7,9 +7,7 @@ export const menuSlice = createSlice({
   },
   reducers: {
     toogleModal: state => {
-      //state.value = !state.value;
       state.value = state.value === true ? false : true;
-      console.log('-----> state.value = ', state.value);
     },
     closeModal: state => {
       state.value = false;

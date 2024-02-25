@@ -13,6 +13,7 @@ import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
 import LinksTile from './LinksTile';
+import Footer from '../../components/Footer';
 
 export default function Links() {
   const [data, setData] = useState();
@@ -49,6 +50,8 @@ export default function Links() {
             <LinksTile key={index} item={item} />
           ))}
         </View>
+        {/* FOOTER */}
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );

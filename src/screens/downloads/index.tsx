@@ -13,6 +13,7 @@ import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
 import DownloadsTile from './DownloadsTile';
+import Footer from '../../components/Footer';
 
 export default function Downloads() {
   const [data, setData] = useState();
@@ -48,6 +49,8 @@ export default function Downloads() {
             <DownloadsTile key={index} item={item} />
           ))}
         </View>
+        {/* FOOTER */}
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );

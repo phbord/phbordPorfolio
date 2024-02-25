@@ -20,6 +20,7 @@ import bgImagesData from '../../../assets/images/backgrounds/bgImagesData';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
+import Footer from '../../components/Footer';
 
 export default function ObliquesStrategies() {
   const [data, setData] = useState();
@@ -77,6 +78,8 @@ export default function ObliquesStrategies() {
             </Text>
           </View>
         </View>
+        {/* FOOTER */}
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   sentence: {
-    minHeight: 70,
+    minHeight: 140,
     marginBottom: 15,
     color: colors.blueDark,
     fontSize: 35,
