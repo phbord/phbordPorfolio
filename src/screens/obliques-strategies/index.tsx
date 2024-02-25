@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
@@ -7,7 +15,7 @@ import {selectLang} from '../../services/store/features/langs/langSlice';
 import getData from '../../services/getData';
 import {optionsObliqueStrategies} from '../../services/optionsData';
 import i18nData from '../../../assets/data/i18nData';
-import {ImgProfile} from '../../../assets';
+import {ImgProfile, IconThunder} from '../../../assets';
 import bgImagesData from '../../../assets/images/backgrounds/bgImagesData';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
@@ -19,15 +27,16 @@ export default function ObliquesStrategies() {
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
   const keywordsData = i18nData.t('mainKeywords', {returnObjects: true});
   const titleData = i18nData.t('header', {returnObjects: true});
+  const [sentence, setSentence] = useState('');
 
-  const fetchData = async () => {
-    setData(await getData(optionsObliqueStrategies));
-    //console.log('data[0] =======>', data[0]);
-    return data;
+  const createRandomSentence = () => {
+    const data = i18nData.t('strategiesObliques', {returnObjects: true});
+    const random = Math.floor(Math.random() * data.length);
+    setSentence(data[random]);
   };
 
   useEffect(() => {
-    fetchData();
+    createRandomSentence();
   }, []);
 
   return (
@@ -43,7 +52,30 @@ export default function ObliquesStrategies() {
         <View style={styles.content}>
           {/* TITLE */}
           <Text style={styles.title}>{titleData[5].name}</Text>
-          {/* LIST */}
+          {/* RANDOM */}
+          <Text style={styles.sentence}>"{sentence}"</Text>
+          {/* BUTTON GROUP */}
+          <View style={styles.buttonGroup}>
+            <TouchableOpacity
+              onPress={() => createRandomSentence()}
+              style={styles.button}>
+              <Image source={IconThunder} style={styles.icon} />
+              <Text style={styles.buttonText}>
+                {i18nData.t('strategiesObliquesButton')}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          {/* RESUME GROUP */}
+          <View style={styles.resumeGroup}>
+            {/* SUBTITLE */}
+            <Text style={styles.subtitle}>
+              {i18nData.t('strategiesObliquesChapo')}
+            </Text>
+            {/* RESUME */}
+            <Text style={styles.resume}>
+              {i18nData.t('strategiesObliquesParagraph')}
+            </Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -60,7 +92,55 @@ const styles = StyleSheet.create({
     paddingBottom: 60,
   },
   title: {
+    marginBottom: 15,
     color: colors.red,
     fontSize: 25,
+  },
+  subtitle: {
+    marginBottom: 5,
+    color: colors.red,
+    fontSize: 18,
+  },
+  sentence: {
+    minHeight: 70,
+    marginBottom: 15,
+    color: colors.blueDark,
+    fontSize: 35,
+    fontWeight: '600',
+  },
+  resumeGroup: {
+    padding: 10,
+    borderColor: colors.red,
+    borderWidth: 1,
+    borderStyle: 'dotted',
+  },
+  resume: {
+    color: colors.blueDark,
+    fontSize: 16,
+  },
+  buttonGroup: {
+    marginTop: 15,
+    marginBottom: 35,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  button: {
+    paddingVertical: 7.5,
+    paddingHorizontal: spaces.containerSpaceX,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.red,
+  },
+  buttonText: {
+    color: colors.light,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  icon: {
+    width: 18,
+    height: 18,
+    marginRight: 2.5,
   },
 });

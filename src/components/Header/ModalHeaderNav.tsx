@@ -1,21 +1,10 @@
 import React, {ReactElement, useEffect, useState} from 'react';
-import {
-  Modal,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  FlatList,
-  Image,
-} from 'react-native';
+import {Modal, StyleSheet, View, FlatList} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {AppDispatch, RootState} from '../../interfaces/mainData/reduxInterface';
 import {ModalHeaderTileInterface} from '../../interfaces/mainData/modalHeaderTile';
-import {
-  closeModal,
-  selectMenu,
-} from '../../services/store/features/menu/menuSlice';
+import {selectMenu} from '../../services/store/features/menu/menuSlice';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
