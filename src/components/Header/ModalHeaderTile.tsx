@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {WebView} from 'react-native-webview';
 import {Link} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
@@ -20,23 +21,15 @@ export default function ModalHeaderTile({
     <Text style={styles.text}>{item.name}</Text>
   );
 
-  const handlePress = () => {
-    Linking.canOpenURL(item.href).then(() => {
-      Linking.openURL(item.href);
-    });
-  };
-
-  return item.isDownload ? (
-    <TouchableOpacity onPress={handlePress} style={styles.link}>
-      {TextBlock}
-    </TouchableOpacity>
-  ) : (
-    <Link
-      to={{screen: dataHeader[index]}}
-      onPress={() => dispatch(closeModal())}
-      style={styles.link}>
-      {TextBlock}
-    </Link>
+  return (
+    !item.isNotMenu && (
+      <Link
+        to={{screen: dataHeader[index]}}
+        onPress={() => dispatch(closeModal())}
+        style={styles.link}>
+        {TextBlock}
+      </Link>
+    )
   );
 }
 

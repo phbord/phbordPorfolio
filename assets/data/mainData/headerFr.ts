@@ -8,6 +8,11 @@ const headerFr: headerInterface[] = [
   {name: 'Téléchargements', href: '/downloads'},
   {name: 'Stratégies Obliques', href: '/oblique-strategies'},
   {
+    name: `Description d'expériences`,
+    href: '/ExperiencesDescription',
+    isNotMenu: true,
+  },
+  {
     name: 'CV à télécharger',
     href: 'https://www.dropbox.com/s/myarm5ozn29wwim/CV_pierre-henri_bord_dev-front.pdf?dl=0',
     isDownload: true,

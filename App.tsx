@@ -23,6 +23,7 @@ import Links from './src/screens/links';
 import Downloads from './src/screens/downloads';
 import ObliquesStrategies from './src/screens/obliques-strategies';
 import ExperiencesDescription from './src/screens/experiences/ExperiencesDescription';
+import Cv from './src/screens/cv';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ function App(): React.JSX.Element {
     {name: dataHeader[4], component: Downloads},
     {name: dataHeader[5], component: ObliquesStrategies},
     {name: dataHeader[6], component: ExperiencesDescription},
+    {name: dataHeader[7], component: Cv},
   ];
 
   return (
@@ -60,7 +62,7 @@ function App(): React.JSX.Element {
                 <stack.component {...props} title={menuData[index].name} />
               )}
             </Stack.Screen>
-            ))}
+          ))}
         </Stack.Navigator>
       </NavigationContainer>
     </StoreProvider>
