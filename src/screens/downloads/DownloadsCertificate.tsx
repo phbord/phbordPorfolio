@@ -4,16 +4,20 @@ import {StyleSheet} from 'react-native';
 import WebView from 'react-native-webview';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
+import {dowloadsCertificateInterface} from '../../interfaces/mainData/DownloadsCertificateInterface';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import i18nData from '../../../assets/data/i18nData';
 import spaces from '../../../assets/styles/spaces';
 import colors from '../../../assets/styles/colors';
 import ButtonBack from '../../components/Ui/ButtonBack';
 
-export default function Cv({navigation}: any) {
+export default function DownloadsCertificate({
+  route,
+  navigation,
+}: dowloadsCertificateInterface) {
+  const {uri} = route.params;
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
-  const uri: string = i18nData.t('header', {returnObjects: true})[7].href;
 
   return (
     <>

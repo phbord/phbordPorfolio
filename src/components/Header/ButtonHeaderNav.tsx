@@ -8,7 +8,6 @@ import {IconBurgerMenu} from '../../../assets';
 import {toogleModal} from '../../services/store/features/menu/menuSlice';
 
 export default function ButtonHeaderNav() {
-  //const isMenuShowed: RootState = useSelector(selectMenu);
   const dispatch: AppDispatch = useDispatch();
 
   return (

@@ -2,12 +2,13 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
+import {dowloadsInterface} from '../../interfaces/mainData/dowloadsInterface';
 import colors from '../../../assets/styles/colors';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import {IconPlus} from '../../../assets';
 
-export default function ExperiencesTile({item, navigation}) {
+export default function ExperiencesTile({item, navigation}: dowloadsInterface) {
   const lang: RootState = useSelector(selectLang);
 
   return (

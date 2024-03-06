@@ -7,7 +7,7 @@ import {selectLang} from '../../services/store/features/langs/langSlice';
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import KnowledgesList from './KnowledgesList';
 
-export default function KnowledgesTile({item}) {
+export default function KnowledgesTile({item}: object) {
   const lang: RootState = useSelector(selectLang);
 
   return (
@@ -17,7 +17,7 @@ export default function KnowledgesTile({item}) {
       </Text>
       {/* LIST */}
       <View style={styles.list}>
-        {item.list.map((itemList, index) => (
+        {item.list.map((itemList: any, index: React.Key | null | undefined) => (
           <KnowledgesList key={index} item={itemList} />
         ))}
       </View>

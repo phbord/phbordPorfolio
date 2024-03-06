@@ -1,6 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 import i18nData from '../../../assets/data/i18nData';
 import spaces from '../../../assets/styles/spaces';
@@ -10,7 +14,7 @@ import ButtonHeadeLang from './ButtonHeaderLang';
 import ModalHeaderNav from './ModalHeaderNav';
 
 export default function Header() {
-  const navigation = useNavigation();
+  const navigation: object = useNavigation<NavigationProp<ParamListBase>>();
 
   return (
     <View style={styles.container}>

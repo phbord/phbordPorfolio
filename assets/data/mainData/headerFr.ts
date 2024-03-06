@@ -18,6 +18,21 @@ const headerFr: headerInterface[] = [
     isDownload: true,
     isBlank: true,
   },
+  {
+    name: `Téléchargement de certificats`,
+    href: '/DownloadsCertificate',
+    isNotMenu: true,
+  },
+  {
+    name: `Liens`,
+    href: '/LinksExample',
+    isNotMenu: true,
+  },
+  {
+    name: `Formations`,
+    href: '/TrainingsExample',
+    isNotMenu: true,
+  },
 ];
 
 export default headerFr;

@@ -1,27 +1,16 @@
 import React from 'react';
-import {
-  Image,
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
+import {dowloadsInterface} from '../../interfaces/mainData/dowloadsInterface';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import {IconStar} from '../../../assets';
 import colors from '../../../assets/styles/colors';
+import dataHeader from '../../../assets/data/dataHeader';
 
-export default function LinksTile({item}) {
+export default function LinksTile({navigation, item}: dowloadsInterface) {
   const lang: RootState = useSelector(selectLang);
-
-  const handlePress = () => {
-    Linking.canOpenURL(item.url).then(() => {
-      Linking.openURL(item.url);
-    });
-  };
 
   return (
     <View style={styles.container}>
@@ -34,14 +23,19 @@ export default function LinksTile({item}) {
           <Image source={IconStar} style={styles.iconStar} />
         )}
       </Text>
-      <Text style={styles.text}>
-        {lang === 'fr' ? item.description_fr : item.description_en}
-      </Text>
-      {item.url && (
-        <TouchableOpacity onPress={handlePress}>
-          <Text style={styles.link}>{item.url}</Text>
-        </TouchableOpacity>
-      )}
+      <View>
+        <Text style={styles.text}>
+          {lang === 'fr' ? item.description_fr : item.description_en}
+        </Text>
+        {item.url && !item.isNotMenu && (
+          <TouchableOpacity
+            onPress={() => navigation.navigate(dataHeader[9], {uri: item.url})}>
+            <Text style={styles.link} numberOfLines={1} ellipsizeMode="tail">
+              {item.url}
+            </Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 }
@@ -79,13 +73,14 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     marginTop: 5,
-    color: colors.greyMiddle,
+    color: colors.greyDark,
     fontSize: 16,
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   text: {
     width: '100%',
+    maxWidth: 600,
     display: 'flex',
     marginTop: 5,
     color: colors.greyDark,
@@ -93,6 +88,7 @@ const styles = StyleSheet.create({
   },
   link: {
     width: '100%',
+    maxWidth: 600,
     display: 'flex',
     marginTop: 5,
     color: colors.blueMiddle,

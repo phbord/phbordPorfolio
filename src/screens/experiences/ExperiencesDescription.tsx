@@ -3,12 +3,13 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
+import {dowloadsCertificateInterface} from '../../interfaces/mainData/DownloadsCertificateInterface';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import {IconArrowLeft} from '../../../assets';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
 
-export default function ExperiencesDescription({route, navigation}) {
+export default function ExperiencesDescription({route, navigation}: dowloadsCertificateInterface) {
   const lang: RootState = useSelector(selectLang);
   const {item} = route.params;
 
@@ -24,7 +25,7 @@ export default function ExperiencesDescription({route, navigation}) {
   return (
     <View style={styles.container}>
       {/* BACK BUTTON */}
-      <View style={styles.backButtonGroup}>
+      <View>
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
@@ -33,7 +34,7 @@ export default function ExperiencesDescription({route, navigation}) {
         </TouchableOpacity>
       </View>
       {/* BODY */}
-      <View style={styles.bodyGroup}>
+      <View>
         {/* TITLE */}
         <Text style={item.is_important ? styles.titleFav : styles.title}>
           {lang === 'fr' ? item.firm_fr : item.firm_en}
@@ -75,11 +76,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaces.containerSpaceX,
     paddingBottom: 60,
   },
-  backButtonGroup: {},
-  backButton: {},
-  bodyGroup: {},
   title: {
     width: '100%',
+    maxWidth: 600,
     marginTop: 20,
     paddingTop: 7.5,
     borderTopColor: colors.red,
@@ -89,6 +88,7 @@ const styles = StyleSheet.create({
   },
   titleFav: {
     width: '100%',
+    maxWidth: 600,
     marginTop: 20,
     paddingTop: 7.5,
     borderTopColor: colors.red,
@@ -99,16 +99,19 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   text: {
+    maxWidth: 600,
     marginTop: 5,
     color: colors.greyDark,
     fontSize: 16,
   },
   project: {
+    maxWidth: 600,
     marginVertical: 5,
     color: colors.greyDark,
     fontSize: 18,
   },
   position: {
+    maxWidth: 600,
     marginTop: 5,
     marginBottom: 15,
     color: colors.greyDark,
@@ -117,6 +120,7 @@ const styles = StyleSheet.create({
   },
   list: {
     width: '100%',
+    maxWidth: 600,
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
+import {Action, Dispatch} from 'redux';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import {selectLang} from '../../services/store/features/langs/langSlice';
@@ -15,16 +16,15 @@ import BackgroundImage from '../../components/Ui/BackgroundImage';
 import LinksTile from './LinksTile';
 import Footer from '../../components/Footer';
 
-export default function Links() {
-  const [data, setData] = useState();
+export default function Links({navigation}: any) {
+  const [data, setData]: [undefined, Dispatch<Action<string>>] = useState();
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
-  const keywordsData = i18nData.t('mainKeywords', {returnObjects: true});
-  const titleData = i18nData.t('header', {returnObjects: true});
+  const keywordsData: string = i18nData.t('mainKeywords', {returnObjects: true});
+  const titleData: string = i18nData.t('header', {returnObjects: true});
 
-  const fetchData = async () => {
+  const fetchData = async (): Promise<string[]> => {
     setData(await getData(optionsLinks));
-    //console.log('data[0] =======>', data[0]);
     return data;
   };
 
@@ -47,7 +47,7 @@ export default function Links() {
           <Text style={styles.title}>{titleData[3].name}</Text>
           {/* LIST */}
           {data?.map((item, index) => (
-            <LinksTile key={index} item={item} />
+            <LinksTile key={index} item={item} navigation={navigation} />
           ))}
         </View>
         {/* FOOTER */}

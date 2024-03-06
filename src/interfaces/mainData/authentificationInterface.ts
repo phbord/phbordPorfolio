@@ -1,4 +1,4 @@
 export interface authentificationInterface {
-  name: String,
-  href: String,
+  name: String;
+  href: String;
 }

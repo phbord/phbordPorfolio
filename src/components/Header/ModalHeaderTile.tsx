@@ -1,6 +1,5 @@
-import React from 'react';
-import {Linking, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {WebView} from 'react-native-webview';
+import React, {ReactNode} from 'react';
+import {StyleSheet, Text} from 'react-native';
 import {Link} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
@@ -14,7 +13,7 @@ import spaces from '../../../assets/styles/spaces';
 export default function ModalHeaderTile({
   item,
   index,
-}: ModalHeaderTileInterface): Element {
+}: ModalHeaderTileInterface): ReactNode {
   const dispatch: AppDispatch = useDispatch();
 
   const TextBlock: React.JSX.Element = (

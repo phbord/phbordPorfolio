@@ -1,27 +1,16 @@
 import React from 'react';
-import {
-  Image,
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
+import {dowloadsInterface} from '../../interfaces/mainData/dowloadsInterface';
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import {IconDownload, IconStar} from '../../../assets';
 import colors from '../../../assets/styles/colors';
+import dataHeader from '../../../assets/data/dataHeader';
 
-export default function DownloadsTile({item}) {
+export default function DownloadsTile({navigation, item}: dowloadsInterface) {
   const lang: RootState = useSelector(selectLang);
-
-  const handlePress = () => {
-    Linking.canOpenURL(item.file).then(() => {
-      Linking.openURL(item.file);
-    });
-  };
 
   return (
     <View style={styles.container}>
@@ -38,10 +27,17 @@ export default function DownloadsTile({item}) {
         {lang === 'fr' ? item.title_fr : item.title_en}
       </Text>
       {item.school && <Text style={styles.text}>{item.school}</Text>}
-      {item.file && (
-        <TouchableOpacity onPress={handlePress} style={styles.file}>
+      {item.file && !item.isNotMenu && (
+        <TouchableOpacity
+          onPress={() => navigation.navigate(dataHeader[8], {uri: item.file})}
+          style={styles.file}>
           <Image source={IconDownload} />
         </TouchableOpacity>
+      )}
+      {!item.file && !item.isNotMenu && (
+        <View style={styles.file}>
+          <Image source={IconDownload} style={styles.iconDownload} />
+        </View>
       )}
     </View>
   );
@@ -49,6 +45,7 @@ export default function DownloadsTile({item}) {
 
 const styles = StyleSheet.create({
   container: {
+    maxWidth: 600,
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
@@ -111,5 +108,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  iconDownload: {
+    opacity: 0.25,
   },
 });

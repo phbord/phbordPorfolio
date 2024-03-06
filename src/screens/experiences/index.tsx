@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
+import {Action, Dispatch} from 'redux';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import {selectLang} from '../../services/store/features/langs/langSlice';
@@ -15,14 +16,14 @@ import BackgroundImage from '../../components/Ui/BackgroundImage';
 import ExperiencesTile from './ExperiencesTile';
 import Footer from '../../components/Footer';
 
-export default function Experiences({navigation}) {
-  const [data, setData] = useState();
+export default function Experiences({navigation}: any) {
+  const [data, setData]: [undefined, Dispatch<Action<string>>] = useState();
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
-  const keywordsData = i18nData.t('mainKeywords', {returnObjects: true});
-  const titleData = i18nData.t('header', {returnObjects: true});
+  const keywordsData: string = i18nData.t('mainKeywords', {returnObjects: true});
+  const titleData: string = i18nData.t('header', {returnObjects: true});
 
-  const fetchData = async () => {
+  const fetchData = async (): Promise<string[]> => {
     setData(await getData(optionsExperiences));
     return data;
   };

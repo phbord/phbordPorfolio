@@ -7,6 +7,9 @@ const dataHeader = [
   'ObliquesStrategies',
   'ExperiencesDescription',
   'CV',
+  'DownloadsCertificate',
+  'LinksExample',
+  'TrainingsExample',
 ];
 
 export default dataHeader;

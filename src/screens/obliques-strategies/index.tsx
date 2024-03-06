@@ -9,11 +9,10 @@ import {
   View,
 } from 'react-native';
 import {useSelector} from 'react-redux';
+import {Action, Dispatch} from 'redux';
 
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import {selectLang} from '../../services/store/features/langs/langSlice';
-import getData from '../../services/getData';
-import {optionsObliqueStrategies} from '../../services/optionsData';
 import i18nData from '../../../assets/data/i18nData';
 import {ImgProfile, IconThunder} from '../../../assets';
 import bgImagesData from '../../../assets/images/backgrounds/bgImagesData';
@@ -23,12 +22,12 @@ import BackgroundImage from '../../components/Ui/BackgroundImage';
 import Footer from '../../components/Footer';
 
 export default function ObliquesStrategies() {
-  const [data, setData] = useState();
+  const [data, setData]: [undefined, Dispatch<Action<string>>] = useState();
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
-  const keywordsData = i18nData.t('mainKeywords', {returnObjects: true});
-  const titleData = i18nData.t('header', {returnObjects: true});
-  const [sentence, setSentence] = useState('');
+  const keywordsData: string = i18nData.t('mainKeywords', {returnObjects: true});
+  const titleData: string = i18nData.t('header', {returnObjects: true});
+  const [sentence, setSentence]: [undefined, Dispatch<Action<string>>] = useState('');
 
   const createRandomSentence = () => {
     const data = i18nData.t('strategiesObliques', {returnObjects: true});
@@ -90,6 +89,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
+    maxWidth: 600,
     marginTop: spaces.containerSpaceX,
     paddingHorizontal: spaces.containerSpaceX,
     paddingBottom: 60,

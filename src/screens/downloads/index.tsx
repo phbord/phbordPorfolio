@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {SetStateAction, useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
@@ -14,15 +14,16 @@ import spaces from '../../../assets/styles/spaces';
 import BackgroundImage from '../../components/Ui/BackgroundImage';
 import DownloadsTile from './DownloadsTile';
 import Footer from '../../components/Footer';
+import { Action, Dispatch } from 'redux';
 
-export default function Downloads() {
-  const [data, setData] = useState();
+export default function Downloads({navigation}: any) {
+  const [data, setData]: [undefined, Dispatch<Action<string>>] = useState();
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
-  const keywordsData = i18nData.t('mainKeywords', {returnObjects: true});
-  const titleData = i18nData.t('header', {returnObjects: true});
+  const keywordsData: string = i18nData.t('mainKeywords', {returnObjects: true});
+  const titleData: string = i18nData.t('header', {returnObjects: true});
 
-  const fetchData = async () => {
+  const fetchData = async (): Promise<string[]> => {
     setData(await getData(optionsDownloads));
     return data;
   };
@@ -46,7 +47,7 @@ export default function Downloads() {
           <Text style={styles.title}>{titleData[4].name}</Text>
           {/* LIST */}
           {data?.map((item, index) => (
-            <DownloadsTile key={index} item={item} />
+            <DownloadsTile key={index} item={item} navigation={navigation} />
           ))}
         </View>
         {/* FOOTER */}

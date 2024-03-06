@@ -1,10 +1,20 @@
-import React, {ReactElement, useEffect, useState} from 'react';
-import {Modal, StyleSheet, View, FlatList} from 'react-native';
+import React, {ReactElement, SetStateAction, useEffect, useState} from 'react';
+import {
+  Modal,
+  StyleSheet,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import {Action, Dispatch} from 'redux';
 
 import {AppDispatch, RootState} from '../../interfaces/mainData/reduxInterface';
 import {ModalHeaderTileInterface} from '../../interfaces/mainData/modalHeaderTile';
-import {selectMenu} from '../../services/store/features/menu/menuSlice';
+import {
+  closeModal,
+  selectMenu,
+} from '../../services/store/features/menu/menuSlice';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import colors from '../../../assets/styles/colors';
 import spaces from '../../../assets/styles/spaces';
@@ -14,16 +24,21 @@ import ButtonHeadeLang from './ButtonHeaderLang';
 import ButtonHeaderNav from './ButtonHeaderNav';
 
 export default function ModalHeaderNav(): ReactElement<any, any> {
+  const [page, setPage]: [undefined, Dispatch<Action<string>>] = useState(0);
   const dispatch: AppDispatch = useDispatch();
   const isMenuShowed: RootState = useSelector(selectMenu);
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
-  const [titleData, setTitleData] = useState(
-    i18nData.t('header', {returnObjects: true}),
-  );
+  const [titleData, setTitleData]: [string, Dispatch<SetStateAction<string>>] =
+    useState(i18nData.t('header', {returnObjects: true}));
 
   const renderItem = ({item, index}: ModalHeaderTileInterface): Element => {
     return <ModalHeaderTile item={item} index={index} />;
+  };
+
+  const onEndReached = (): void => {
+    // charger des nouvelles recettes en arrivant en bas de la page
+    setPage(currPage => currPage + 1);
   };
 
   useEffect(() => {
@@ -42,7 +57,9 @@ export default function ModalHeaderNav(): ReactElement<any, any> {
         <ButtonHeaderNav />
       </View>
       {/* CONTENT */}
-      <View style={styles.overlay}>
+      <TouchableOpacity
+        style={styles.overlay}
+        onPress={() => dispatch(closeModal())}>
         <View style={styles.body}>
           <View style={styles.list}>
             {/* LIST */}
@@ -50,10 +67,11 @@ export default function ModalHeaderNav(): ReactElement<any, any> {
               data={titleData}
               keyExtractor={(item, index) => index.toString()}
               renderItem={renderItem}
+              onEndReached={onEndReached}
             />
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   );
 }

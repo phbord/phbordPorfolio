@@ -1,20 +1,20 @@
 import React from 'react';
-import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
+import {dowloadsInterface} from '../../interfaces/mainData/dowloadsInterface';
 import colors from '../../../assets/styles/colors';
+import dataHeader from '../../../assets/data/dataHeader';
 
-export default function TrainingsProject({item}) {
-  const handlePress = () => {
-    Linking.canOpenURL(item.url).then(() => {
-      Linking.openURL(item.url);
-    });
-  };
-
+export default function TrainingsProject({
+  navigation,
+  item,
+}: dowloadsInterface) {
   return (
     <View>
       {item.project && <Text style={styles.item}>{item.project}</Text>}
       {item.url && (
-        <TouchableOpacity onPress={handlePress}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(dataHeader[10], {uri: item.url})}>
           <Text style={styles.item}>{item.url}</Text>
         </TouchableOpacity>
       )}

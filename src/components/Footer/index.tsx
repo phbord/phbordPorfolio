@@ -13,7 +13,7 @@ export default function Footer() {
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
 
-  const iconList = ['React', 'React Native', 'Supabase'];
+  const iconList: Array<string> = ['React', 'React Native', 'Supabase'];
 
   return (
     <View style={styles.container}>

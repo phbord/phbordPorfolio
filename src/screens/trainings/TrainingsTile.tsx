@@ -2,13 +2,14 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
+import {dowloadsInterface} from '../../interfaces/mainData/dowloadsInterface';
 import {IconStar} from '../../../assets';
 import colors from '../../../assets/styles/colors';
 import {selectLang} from '../../services/store/features/langs/langSlice';
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import TrainingsProject from './TrainingsProject';
 
-export default function TrainingsTile({item}) {
+export default function TrainingsTile({navigation, item}: dowloadsInterface) {
   const lang: RootState = useSelector(selectLang);
 
   const getYearEnd = item.year_end
@@ -35,12 +36,20 @@ export default function TrainingsTile({item}) {
         {lang === 'fr' &&
           item.projects_fr &&
           item.projects_fr.map((itemList, index) => (
-            <TrainingsProject key={index} item={itemList} />
+            <TrainingsProject
+              key={index}
+              item={itemList}
+              navigation={navigation}
+            />
           ))}
         {lang === 'en' &&
           item.projects_en &&
           item.projects_en.map((itemList, index) => (
-            <TrainingsProject key={index} item={itemList} />
+            <TrainingsProject
+              key={index}
+              item={itemList}
+              navigation={navigation}
+            />
           ))}
       </View>
     </View>
@@ -93,6 +102,7 @@ const styles = StyleSheet.create({
   },
   list: {
     width: '100%',
+    maxWidth: 600,
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',

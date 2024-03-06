@@ -38,7 +38,7 @@ import {
 } from '../../../assets';
 
 export default function KnowledgesList({item}) {
-  const picto = item.picto.replace('.svg', '');
+  const picto: string = item.picto.replace('.svg', '');
 
   const getIconsTech = (pictoFile: string, styles, stylesSquare) => {
     switch (pictoFile) {
