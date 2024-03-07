@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     borderTopColor: colors.red,
     borderTopWidth: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   titleFav: {
@@ -65,8 +66,8 @@ const styles = StyleSheet.create({
     borderTopColor: colors.red,
     borderTopWidth: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Bold',
     fontSize: 18,
-    fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   subtitle: {
@@ -74,8 +75,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: 5,
     color: colors.greyDark,
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
-    fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   text: {
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: 5,
     color: colors.greyDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   link: {
@@ -92,6 +94,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: 5,
     color: colors.blueMiddle,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   iconStar: {

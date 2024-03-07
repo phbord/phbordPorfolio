@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.red,
+    fontFamily: 'Roboto-Regular',
   },
   containerButtons: {
     flexDirection: 'row',
@@ -58,8 +59,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.light,
-    fontFamily: 'Roboto-Regular',
+    fontFamily: 'Roboto-Bold',
     fontSize: 20,
-    fontWeight: 'bold',
   },
 });

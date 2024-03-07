@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     borderTopColor: colors.red,
     borderTopWidth: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   titleFav: {
@@ -70,13 +71,14 @@ const styles = StyleSheet.create({
     borderTopColor: colors.red,
     borderTopWidth: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Bold',
     fontSize: 18,
-    fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   position: {
     marginTop: 5,
     color: colors.greyDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   plusButtonGroup: {

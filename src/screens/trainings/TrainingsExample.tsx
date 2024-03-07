@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomColor: colors.red,
     borderBottomWidth: 1,
-    borderStyle: 'dotted',
     backgroundColor: colors.greyLight,
   },
   buttonText: {
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
 });

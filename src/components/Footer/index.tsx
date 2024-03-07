@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   copyright: {
     marginBottom: 2.5,
+    fontFamily: 'Roboto-Regular',
     textAlign: 'center',
   },
   poweredGroup: {
@@ -48,5 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  powered: {},
+  powered: {
+    fontFamily: 'Roboto-Regular',
+  },
 });

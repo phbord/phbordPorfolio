@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
   },
 });

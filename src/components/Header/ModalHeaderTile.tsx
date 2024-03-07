@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   text: {
     color: colors.greyDark,
     fontSize: 18,
-    fontWeight: '300',
+    fontFamily: 'Roboto-Light',
   },
 });

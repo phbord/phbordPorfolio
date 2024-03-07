@@ -59,14 +59,15 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   diplomaFav: {
     width: '100%',
     display: 'flex',
     color: colors.red,
+    fontFamily: 'Roboto-Bold',
     fontSize: 18,
-    fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   text: {
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: 5,
     color: colors.greyDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   title: {
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: 5,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   subtitle: {
@@ -88,8 +91,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: 5,
     color: colors.greyMiddle,
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
-    fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   link: {
@@ -97,6 +100,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     marginTop: 5,
     color: colors.blueMiddle,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   iconStar: {

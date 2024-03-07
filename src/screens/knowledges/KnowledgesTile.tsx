@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.red,
     borderBottomWidth: 0.5,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   list: {

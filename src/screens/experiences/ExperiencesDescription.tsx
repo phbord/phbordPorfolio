@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     borderTopColor: colors.red,
     borderTopWidth: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   titleFav: {
@@ -94,20 +95,22 @@ const styles = StyleSheet.create({
     borderTopColor: colors.red,
     borderTopWidth: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Bold',
     fontSize: 18,
-    fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   text: {
     maxWidth: 600,
     marginTop: 5,
     color: colors.greyDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   project: {
     maxWidth: 600,
     marginVertical: 5,
     color: colors.greyDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   position: {
@@ -115,8 +118,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 15,
     color: colors.greyDark,
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
-    fontWeight: 'bold',
   },
   list: {
     width: '100%',
@@ -130,6 +133,6 @@ const styles = StyleSheet.create({
     height: 30,
   },
   bold: {
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Regular',
   },
 });

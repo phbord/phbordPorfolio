@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     borderTopColor: colors.red,
     borderTopWidth: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   title: {
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexShrink: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   titleFav: {
@@ -84,8 +86,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexShrink: 1,
     color: colors.red,
+    fontFamily: 'Roboto-Bold',
     fontSize: 18,
-    fontWeight: 'bold',
     textTransform: 'uppercase',
     paddingRight: 15,
   },
@@ -98,6 +100,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     display: 'flex',
     color: colors.greyDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   list: {

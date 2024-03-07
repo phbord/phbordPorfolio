@@ -143,9 +143,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   name: {
+    fontFamily: 'Roboto-Regular',
     fontSize: 14,
   },
   nameBold: {
-    fontWeight: 'bold',
+    fontFamily: 'Roboto-Bold',
   },
 });

@@ -97,17 +97,20 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 15,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 25,
   },
   subtitle: {
     marginBottom: 5,
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 18,
   },
   sentence: {
     minHeight: 140,
     marginBottom: 15,
     color: colors.blueDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 35,
     fontWeight: '600',
   },
@@ -115,10 +118,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: colors.red,
     borderWidth: 1,
-    borderStyle: 'dotted',
   },
   resume: {
     color: colors.blueDark,
+    fontFamily: 'Roboto-Regular',
     fontSize: 16,
   },
   buttonGroup: {
@@ -138,8 +141,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: colors.light,
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
-    fontWeight: 'bold',
   },
   icon: {
     width: 18,

@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   },
   positionText: {
     color: colors.yellow,
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
-    fontWeight: 'bold',
   },
   keyWordsContainer: {
     display: 'flex',
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   keyWordsText: {
     marginEnd: 2.5,
     color: colors.light,
+    fontFamily: 'Roboto-Bold',
     fontSize: 12,
-    fontWeight: 'bold',
   },
 });

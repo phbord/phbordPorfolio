@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {StatusBar, StyleSheet} from 'react-native';
+import {StatusBar, SafeAreaView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Provider as StoreProvider} from 'react-redux';
@@ -50,31 +50,31 @@ function App(): React.JSX.Element {
 
   return (
     <StoreProvider store={store}>
-      <NavigationContainer>
-        {/* T O P */}
-        <StatusBar backgroundColor={colors.red} />
-        <Header />
-        {/* S C R E E N S */}
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}>
-          {data.map((stack, index) => (
-            <Stack.Screen
-              key={index}
-              name={stack.name}
-              options={{title: menuData[index].name}}>
-              {props => (
-                <stack.component {...props} title={menuData[index].name} />
-              )}
-            </Stack.Screen>
-          ))}
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SafeAreaView style={{flex: 1}}>
+        <NavigationContainer>
+          {/* T O P */}
+          <StatusBar backgroundColor={colors.red} />
+          <Header />
+          {/* S C R E E N S */}
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}>
+            {data.map((stack, index) => (
+              <Stack.Screen
+                key={index}
+                name={stack.name}
+                options={{title: menuData[index].name}}>
+                {props => (
+                  <stack.component {...props} title={menuData[index].name} />
+                )}
+              </Stack.Screen>
+            ))}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
     </StoreProvider>
   );
 }
-
-const styles = StyleSheet.create({});
 
 export default App;

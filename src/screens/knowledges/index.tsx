@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.red,
+    fontFamily: 'Roboto-Regular',
     fontSize: 25,
   },
 });
