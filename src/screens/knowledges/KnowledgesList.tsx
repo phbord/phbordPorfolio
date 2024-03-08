@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import {ActivityIndicator, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Image,
+  StyleProp,
+  StyleSheet,
+  Text,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {
   IconAdobe,
   IconBootstrap,
@@ -42,7 +50,11 @@ export default function KnowledgesList({item}) {
   const [isLoading, setIsLoading]: [undefined, boolean] = useState(true);
   const picto: string = item.picto.replace('.svg', '');
 
-  const getIconsTech = (pictoFile: string, styles, stylesSquare) => {
+  const getIconsTech = (
+    pictoFile: string,
+    styles: StyleProp<ViewStyle>,
+    stylesSquare: StyleProp<ViewStyle>,
+  ) => {
     if (isLoading) {
       return (
         <ActivityIndicator size="small" color={colors.red} style={styles} />
