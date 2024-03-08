@@ -46,11 +46,7 @@ export default function ModalHeaderNav(): ReactElement<any, any> {
   }, [lang]);
 
   return (
-    <Modal
-      visible={isMenuShowed}
-      animationType="fade"
-      transparent
-      supportedOrientations={['portrait-upside-down']}>
+    <Modal visible={isMenuShowed} animationType="fade" transparent>
       {/* BUTTON GROUP */}
       <View style={styles.containerButtons}>
         <ButtonHeadeLang />

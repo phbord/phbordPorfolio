@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  ActivityIndicator,
   Image,
   SafeAreaView,
   ScrollView,
@@ -22,17 +23,22 @@ import BackgroundImage from '../../components/Ui/BackgroundImage';
 import Footer from '../../components/Footer';
 
 export default function ObliquesStrategies() {
+  const [isLoading, setIsLoading]: [undefined, boolean] = useState(true);
   const [data, setData]: [undefined, Dispatch<Action<string>>] = useState();
   const lang: RootState = useSelector(selectLang);
   i18nData.locale = lang === 'fr' ? 'fr' : 'en';
-  const keywordsData: string = i18nData.t('mainKeywords', {returnObjects: true});
+  const keywordsData: string = i18nData.t('mainKeywords', {
+    returnObjects: true,
+  });
   const titleData: string = i18nData.t('header', {returnObjects: true});
-  const [sentence, setSentence]: [undefined, Dispatch<Action<string>>] = useState('');
+  const [sentence, setSentence]: [undefined, Dispatch<Action<string>>] =
+    useState('');
 
   const createRandomSentence = () => {
     const data = i18nData.t('strategiesObliques', {returnObjects: true});
     const random = Math.floor(Math.random() * data.length);
     setSentence(data[random]);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -41,45 +47,51 @@ export default function ObliquesStrategies() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
-        {/* BACKGROUND IMAGE */}
-        <BackgroundImage
-          bgSource={bgImagesData.fuji}
-          profileSource={ImgProfile}
-          positionText={i18nData.t('position')}
-          keyWordsText={keywordsData}
-        />
-        <View style={styles.content}>
-          {/* TITLE */}
-          <Text style={styles.title}>{titleData[5].name}</Text>
-          {/* RANDOM */}
-          <Text style={styles.sentence}>"{sentence}"</Text>
-          {/* BUTTON GROUP */}
-          <View style={styles.buttonGroup}>
-            <TouchableOpacity
-              onPress={() => createRandomSentence()}
-              style={styles.button}>
-              <Image source={IconThunder} style={styles.icon} />
-              <Text style={styles.buttonText}>
-                {i18nData.t('strategiesObliquesButton')}
-              </Text>
-            </TouchableOpacity>
-          </View>
-          {/* RESUME GROUP */}
-          <View style={styles.resumeGroup}>
-            {/* SUBTITLE */}
-            <Text style={styles.subtitle}>
-              {i18nData.t('strategiesObliquesChapo')}
-            </Text>
-            {/* RESUME */}
-            <Text style={styles.resume}>
-              {i18nData.t('strategiesObliquesParagraph')}
-            </Text>
-          </View>
+      {isLoading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color={colors.red} />
         </View>
-        {/* FOOTER */}
-        <Footer />
-      </ScrollView>
+      ) : (
+        <ScrollView>
+          {/* BACKGROUND IMAGE */}
+          <BackgroundImage
+            bgSource={bgImagesData.fuji}
+            profileSource={ImgProfile}
+            positionText={i18nData.t('position')}
+            keyWordsText={keywordsData}
+          />
+          <View style={styles.content}>
+            {/* TITLE */}
+            <Text style={styles.title}>{titleData[5].name}</Text>
+            {/* RANDOM */}
+            <Text style={styles.sentence}>"{sentence}"</Text>
+            {/* BUTTON GROUP */}
+            <View style={styles.buttonGroup}>
+              <TouchableOpacity
+                onPress={() => createRandomSentence()}
+                style={styles.button}>
+                <Image source={IconThunder} style={styles.icon} />
+                <Text style={styles.buttonText}>
+                  {i18nData.t('strategiesObliquesButton')}
+                </Text>
+              </TouchableOpacity>
+            </View>
+            {/* RESUME GROUP */}
+            <View style={styles.resumeGroup}>
+              {/* SUBTITLE */}
+              <Text style={styles.subtitle}>
+                {i18nData.t('strategiesObliquesChapo')}
+              </Text>
+              {/* RESUME */}
+              <Text style={styles.resume}>
+                {i18nData.t('strategiesObliquesParagraph')}
+              </Text>
+            </View>
+          </View>
+          {/* FOOTER */}
+          <Footer />
+        </ScrollView>
+      )}
     </SafeAreaView>
   );
 }
@@ -87,6 +99,11 @@ export default function ObliquesStrategies() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   content: {
     maxWidth: 600,
