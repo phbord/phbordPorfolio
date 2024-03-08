@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
+  ActivityIndicator,
   Image,
   ImageBackground,
   ImageProps,
@@ -26,22 +27,39 @@ export default function BackgroundImage({
   positionText,
   keyWordsText,
 }: BackgroundImageInterface) {
+  const [isLoading, setIsLoading]: [undefined, boolean] = useState(true);
+
   return (
     <ImageBackground
       source={{uri: bgSource}}
       resizeMode="cover"
       style={styles.container}>
       <View style={styles.content}>
-        <Image source={profileSource} style={styles.profile} />
+        <Image
+          source={profileSource}
+          style={styles.profile}
+          onLoadStart={() => setIsLoading(true)}
+          onLoadEnd={() => setIsLoading(false)}
+        />
         <View style={styles.textGroup}>
-          <Text style={styles.positionText}>{positionText}</Text>
-          <View style={styles.keyWordsContainer}>
-            {keyWordsText?.map((text: string, index: React.Key | null | undefined) => (
-              <Text key={index} style={styles.keyWordsText}>
-                {text}
-              </Text>
-            ))}
-          </View>
+          {isLoading ? (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" color={colors.red} />
+            </View>
+          ) : (
+            <>
+              <Text style={styles.positionText}>{positionText}</Text>
+              <View style={styles.keyWordsContainer}>
+                {keyWordsText?.map(
+                  (text: string, index: React.Key | null | undefined) => (
+                    <Text key={index} style={styles.keyWordsText}>
+                      {text}
+                    </Text>
+                  ),
+                )}
+              </View>
+            </>
+          )}
         </View>
       </View>
     </ImageBackground>
@@ -58,6 +76,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   content: {
     display: 'flex',
