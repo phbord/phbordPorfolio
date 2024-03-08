@@ -46,7 +46,7 @@ export default function Experiences({navigation}: any) {
           {/* TITLE */}
           <Text style={styles.title}>{titleData[1].name}</Text>
           {/* LIST */}
-          {data?.map((item, index) => (
+          {data?.map((item: any, index: React.Key | null | undefined) => (
             <ExperiencesTile key={index} item={item} navigation={navigation} />
           ))}
         </View>

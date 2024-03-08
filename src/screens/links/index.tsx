@@ -46,7 +46,7 @@ export default function Links({navigation}: any) {
           {/* TITLE */}
           <Text style={styles.title}>{titleData[3].name}</Text>
           {/* LIST */}
-          {data?.map((item, index) => (
+          {data?.map((item: any, index: React.Key | null | undefined) => (
             <LinksTile key={index} item={item} navigation={navigation} />
           ))}
         </View>

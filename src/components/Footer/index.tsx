@@ -22,7 +22,7 @@ export default function Footer() {
       </Text>
       <View style={styles.poweredGroup}>
         <Text style={styles.powered}>Powered by </Text>
-        {iconList.map((item, index) => (
+        {iconList.map((item: any, index: React.Key | null | undefined) => (
           <FooterTile key={index} item={item} index={index} />
         ))}
       </View>

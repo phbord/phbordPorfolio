@@ -46,7 +46,7 @@ export default function Downloads({navigation}: any) {
           {/* TITLE */}
           <Text style={styles.title}>{titleData[4].name}</Text>
           {/* LIST */}
-          {data?.map((item, index) => (
+          {data?.map((item: any, index: React.Key | null | undefined) => (
             <DownloadsTile key={index} item={item} navigation={navigation} />
           ))}
         </View>

@@ -35,7 +35,7 @@ export default function TrainingsTile({navigation, item}: dowloadsInterface) {
       <View style={styles.list}>
         {lang === 'fr' &&
           item.projects_fr &&
-          item.projects_fr.map((itemList, index) => (
+          item.projects_fr.map((itemList: any, index: React.Key | null | undefined) => (
             <TrainingsProject
               key={index}
               item={itemList}
@@ -44,7 +44,7 @@ export default function TrainingsTile({navigation, item}: dowloadsInterface) {
           ))}
         {lang === 'en' &&
           item.projects_en &&
-          item.projects_en.map((itemList, index) => (
+          item.projects_en.map((itemList: any, index: React.Key | null | undefined) => (
             <TrainingsProject
               key={index}
               item={itemList}

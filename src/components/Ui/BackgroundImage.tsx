@@ -36,7 +36,7 @@ export default function BackgroundImage({
         <View style={styles.textGroup}>
           <Text style={styles.positionText}>{positionText}</Text>
           <View style={styles.keyWordsContainer}>
-            {keyWordsText?.map((text: string, index: React.Key) => (
+            {keyWordsText?.map((text: string, index: React.Key | null | undefined) => (
               <Text key={index} style={styles.keyWordsText}>
                 {text}
               </Text>

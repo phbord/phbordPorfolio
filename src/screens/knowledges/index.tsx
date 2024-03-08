@@ -47,7 +47,7 @@ export default function Knowledges({title, navigation}: knowledgesInterface) {
           {/* TITLE */}
           <Text style={styles.title}>{titleData[0].name}</Text>
           {/* LIST */}
-          {data?.map((item, index) => (
+          {data?.map((item: any, index: React.Key | null | undefined) => (
             <KnowledgesTile key={index} item={item} />
           ))}
         </View>

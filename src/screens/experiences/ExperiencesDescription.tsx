@@ -16,7 +16,7 @@ export default function ExperiencesDescription({route, navigation}: dowloadsCert
   const getListItem = (item, langItem) =>
     lang === langItem &&
     item &&
-    item.map((itemList, index) => (
+    item.map((itemList: any, index: React.Key | null | undefined) => (
       <Text key={index} style={styles.text}>
         {itemList}
       </Text>

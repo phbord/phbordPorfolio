@@ -60,7 +60,7 @@ function App(): React.JSX.Element {
             screenOptions={{
               headerShown: false,
             }}>
-            {data.map((stack, index) => (
+            {data.map((stack: any, index: React.Key | null | undefined) => (
               <Stack.Screen
                 key={index}
                 name={stack.name}
