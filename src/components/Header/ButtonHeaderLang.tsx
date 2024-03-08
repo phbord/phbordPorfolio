@@ -13,11 +13,13 @@ export default function ButtonHeadeLang() {
   const lang: RootState = useSelector(selectLang);
   const dispatch: AppDispatch = useDispatch();
 
+  const getLang = (): string => (lang === 'fr' ? 'en' : 'fr');
+
   return (
     <TouchableOpacity
       style={styles.button}
       onPress={() => dispatch(toogleLang())}>
-      <Text style={styles.lang}>{lang}</Text>
+      <Text style={styles.lang}>{getLang()}</Text>
     </TouchableOpacity>
   );
 }
