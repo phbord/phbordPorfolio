@@ -1,12 +1,7 @@
-import React from 'react';
-import {
-  Image,
-  StyleProp,
-  StyleSheet,
-  Text,
-  View,
-  ViewStyle,
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {Action, Dispatch} from '@reduxjs/toolkit';
+
 import {
   IconAdobe,
   IconBootstrap,
@@ -44,91 +39,95 @@ import {
   IconRedux,
 } from '../../../assets';
 
-export default function KnowledgesList({item}) {
+export default function KnowledgesList({item}: any) {
   const picto: string = item.picto.replace('.svg', '');
+  const [iconName, setIconName]: [undefined, Dispatch<Action<string>>] =
+    useState('');
 
-  const getIconsTech = (
-    pictoFile: string,
-    styles: StyleProp<ViewStyle>,
-    stylesSquare: StyleProp<ViewStyle>,
-  ) => {
+  const getIconsTech = (pictoFile: string) => {
     switch (pictoFile) {
       case 'scrum':
-        return <Image source={IconScrum} style={styles} />;
+        return setIconName(IconScrum);
       case 'git':
-        return <Image source={IconGit} style={styles} />;
+        return setIconName(IconGit);
       case 'jira':
-        return <Image source={IconJira} style={styles} />;
+        return setIconName(IconJira);
       case 'webpack':
-        return <Image source={IconWebpack} style={styles} />;
+        return setIconName(IconWebpack);
       case 'gulp':
-        return <Image source={IconGulp} style={styles} />;
+        return setIconName(IconGulp);
       case 'adobe':
-        return <Image source={IconAdobe} style={styles} />;
+        return setIconName(IconAdobe);
       case 'html':
-        return <Image source={IconHtml} style={styles} />;
+        return setIconName(IconHtml);
       case 'sass':
-        return <Image source={IconSass} style={styles} />;
+        return setIconName(IconSass);
       case 'css':
-        return <Image source={IconCss} style={styles} />;
+        return setIconName(IconCss);
       case 'javascript':
-        return <Image source={IconJavascript} style={styles} />;
+        return setIconName(IconJavascript);
       case 'typescript':
-        return <Image source={IconTypescript} style={styles} />;
+        return setIconName(IconTypescript);
       case 'ruby':
-        return <Image source={IconRuby} style={styles} />;
+        return setIconName(IconRuby);
       case 'jquery':
-        return <Image source={IconJquery} style={styles} />;
+        return setIconName(IconJquery);
       case 'tailwind':
-        return <Image source={IconTailwind} style={styles} />;
+        return setIconName(IconTailwind);
       case 'bootstrap':
-        return <Image source={IconBootstrap} style={styles} />;
+        return setIconName(IconBootstrap);
       case 'polymer':
-        return <Image source={IconPolymer} style={styles} />;
+        return setIconName(IconPolymer);
       case 'react':
-        return <Image source={IconReact} style={styles} />;
+        return setIconName(IconReact);
       case 'redux':
-        return <Image source={IconRedux} style={styles} />;
+        return setIconName(IconRedux);
       case 'remix':
-        return <Image source={IconRemix} style={styles} />;
+        return setIconName(IconRemix);
       case 'nextjs':
-        return <Image source={IconNextjs} style={styles} />;
+        return setIconName(IconNextjs);
       case 'zustand':
-        return <Image source={IconZustand} style={stylesSquare} />;
+        return setIconName(IconZustand);
       case 'vuejs':
-        return <Image source={IconVuejs} style={styles} />;
+        return setIconName(IconVuejs);
       case 'nodejs':
-        return <Image source={IconNodejs} style={styles} />;
+        return setIconName(IconNodejs);
       case 'rails':
-        return <Image source={IconRails} style={styles} />;
+        return setIconName(IconRails);
       case 'cypress':
-        return <Image source={IconCypress} style={styles} />;
+        return setIconName(IconCypress);
       case 'selenium':
-        return <Image source={IconSelenium} style={styles} />;
+        return setIconName(IconSelenium);
       case 'supabase':
-        return <Image source={IconSupabase} style={styles} />;
+        return setIconName(IconSupabase);
       case 'strapi':
-        return <Image source={IconStrapi} style={styles} />;
+        return setIconName(IconStrapi);
       case 'mongodb':
-        return <Image source={IconMongodb} style={styles} />;
+        return setIconName(IconMongodb);
       case 'postgresql':
-        return <Image source={IconPostgresql} style={styles} />;
+        return setIconName(IconPostgresql);
       case 'dynamics':
-        return <Image source={IconDynamics} style={styles} />;
+        return setIconName(IconDynamics);
       case 'drupal':
-        return <Image source={IconDrupal} style={styles} />;
+        return setIconName(IconDrupal);
       case 'ez':
-        return <Image source={IconEz} style={styles} />;
+        return setIconName(IconEz);
       case 'hybris':
-        return <Image source={IconHybris} style={styles} />;
+        return setIconName(IconHybris);
     }
   };
 
+  useEffect(() => {
+    getIconsTech(picto);
+  }, []);
+
+  useEffect(() => {
+    getIconsTech(picto);
+  }, [item]);
+
   return (
     <View style={styles.container}>
-      {getIconsTech(picto, styles.picto, styles.pictoSquare)
-        ? getIconsTech(picto, styles.picto, styles.pictoSquare)
-        : null}
+      {iconName && <Image source={iconName} style={styles.picto} />}
       <Text style={item.fav ? styles.nameBold : styles.name}>{item.name}</Text>
     </View>
   );

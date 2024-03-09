@@ -7,7 +7,7 @@ import {selectLang} from '../../services/store/features/langs/langSlice';
 import {RootState} from '../../interfaces/mainData/reduxInterface';
 import KnowledgesList from './KnowledgesList';
 
-export default function KnowledgesTile({item}: object) {
+export default function KnowledgesTile({item}) {
   const lang: RootState = useSelector(selectLang);
 
   return (
