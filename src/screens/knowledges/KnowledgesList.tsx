@@ -37,10 +37,16 @@ import {
   IconWebpack,
   IconZustand,
   IconRedux,
+  IconTransparent,
+  IconMaterialUi,
+  IconTwig,
+  IconPug,
 } from '../../../assets';
 
 export default function KnowledgesList({item}: any) {
-  const picto: string = item.picto.replace('.svg', '');
+  const picto: string = item.picto
+    ? item.picto.replace('.svg', '').replace('.png', '')
+    : undefined;
   const [iconName, setIconName]: [undefined, Dispatch<Action<string>>] =
     useState('');
 
@@ -114,6 +120,14 @@ export default function KnowledgesList({item}: any) {
         return setIconName(IconEz);
       case 'hybris':
         return setIconName(IconHybris);
+      case 'material-ui':
+        return setIconName(IconMaterialUi);
+      case 'pugjs':
+        return setIconName(IconPug);
+      case 'twig':
+        return setIconName(IconTwig);
+      case undefined:
+        return setIconName(IconTransparent);
     }
   };
 

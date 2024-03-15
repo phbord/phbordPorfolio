@@ -7,6 +7,7 @@ import IconArrowLeft from './icons/icon-arrow-left.png';
 import IconDownload from './icons/icon-download.png';
 import IconThunder from './icons/icon-thunder.png';
 // icon-tech
+import IconTransparent from './icons-tech/pixel-transparent.png';
 import IconStar from './icons-tech/svg-logo.png';
 import IconScrum from './icons-tech/scrum.png';
 import IconGit from './icons-tech/git.png';
@@ -42,8 +43,12 @@ import IconEz from './icons-tech/ez.png';
 import IconHybris from './icons-tech/hybris.png';
 import IconSass from './icons-tech/sass.png';
 import IconRedux from './icons-tech/redux.png';
+import IconMaterialUi from './icons-tech/material-ui.png';
+import IconTwig from './icons-tech/twig.png';
+import IconPug from './icons-tech/pugjs.png';
 
 export {
+  IconTransparent,
   ImgProfile,
   IconStar,
   IconPlus,
@@ -86,4 +91,7 @@ export {
   IconHybris,
   IconSass,
   IconRedux,
+  IconMaterialUi,
+  IconTwig,
+  IconPug,
 };
