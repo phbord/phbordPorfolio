@@ -41,11 +41,12 @@ import {
   IconMaterialUi,
   IconTwig,
   IconPug,
+  IconUk,
 } from '../../../assets';
 
 export default function KnowledgesList({item}: any) {
   const picto: string = item.picto
-    ? item.picto.replace('.svg', '').replace('.png', '')
+    ? item.picto.replace('.webp', '')
     : undefined;
   const [iconName, setIconName]: [undefined, Dispatch<Action<string>>] =
     useState('');
@@ -126,6 +127,8 @@ export default function KnowledgesList({item}: any) {
         return setIconName(IconPug);
       case 'twig':
         return setIconName(IconTwig);
+      case 'uk':
+        return setIconName(IconUk);
       case undefined:
         return setIconName(IconTransparent);
     }
